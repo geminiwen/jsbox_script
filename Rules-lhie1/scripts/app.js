@@ -297,8 +297,6 @@ function renderUI() {
                     }, {
                         title: { text: '开启MITM', bgcolor: defaultColor, textColor: blackColor }
                     }, {
-                        title: { text: 'UDP', bgcolor: defaultColor, textColor: blackColor }
-                    }, {
                         title: { text: '导出配置', bgcolor: defaultColor, textColor: blackColor }
                     }],
                     template: [{
@@ -1145,7 +1143,6 @@ function makeConf(params) {
 
         let ads = usualValue('去广告')
         let isMitm = usualValue('开启MITM')
-        let isTF = usualValue('UDP')
         let isActionSheet = usualValue('导出配置')
 
         let serverEditorData = workspace.serverData
@@ -1155,9 +1152,7 @@ function makeConf(params) {
             }
         }).rows
         let autoGroup = flatServerData.filter(i => i.proxyName.bgcolor).map(i => i.proxyName.text).join(',') || 'DIRECT'
-        let proxies = flatServerData.map(i => {
-            return i.proxyLink + (isTF ? ',udp-relay=true' : '')
-        }).join('\n')
+        let proxies = flatServerData.map(i => (i.proxyLink)).join('\n')
         let proxyHeaders = flatServerData.map(i => i.proxyName.text).join(', ')
         let rules = ''
         let prototype = ''
