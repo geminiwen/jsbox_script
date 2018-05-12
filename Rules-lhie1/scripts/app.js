@@ -543,7 +543,7 @@ function linkHandler(url, params) {
             }
         })
     } else if (/[\S\s]+=[\s]*(custom|http|https|socks5|socks5-tls),/.test(url)) {
-        let urls = url.split(/[\r\n]+/g).map(i => i.trim()).filter(i => /[\S\s]+=[\s]*(custom|http|https|socks5|socks5-tls),/.test(i)).map(i => i.replace(/,[\s]*udp-relay=true/, ''))
+        let urls = url.split(/[\r\n]+/g).map(i => i.trim()).filter(i => /[\S\s]+=[\s]*(custom|http|https|socks5|socks5-tls),/.test(i)) 
         let result = []
         for (let idx in urls) {
             result[idx] = urls[idx]
